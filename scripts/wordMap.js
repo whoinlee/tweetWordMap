@@ -11,6 +11,7 @@
     var sWidth = 1024;  //960x480, 1024x512, 1024x682
     var sHeight = 682;
     var totalWord;
+    var dataURL;
 
     var minFontSize = 7;
     var maxFontSize = 77;
@@ -23,10 +24,8 @@
     var minWeight = 1;
     var maxWeight = 9;
     var weightRange = maxWeight - minWeight;
-
+    //
     var margin = 10;
-
-    var dataURL;
 
     //-- init
     function init(){
@@ -71,12 +70,9 @@
           wordArr = joinedText.split(/[\s.:-?"—”]+/);
           var wordArrLength = wordArr.length;
           totalWord = wordArrLength;
-          // console.log("INFO wordArr:  wordArr.length is " + wordArrLength);
-          // console.log(wordArr);
           var childrenArr = [];
           maxCount = 1;
           for (var j=0; j<wordArrLength; j++) {
-            // console.log(j + ": " + wordArr[j] + ", wordMap.get(wordArr[j]): " + wordMap.get(wordArr[j]));
             var name = wordArr[j];
             var childrenLength = childrenArr.length;
             var found = false;
@@ -94,7 +90,6 @@
           }//for
 
           wordObj.children = childrenArr;
-          // console.log("childrenLength is " + wordObj.children.length);
           countRange = maxCount - minCount;
           visualize(wordObj);
       });
@@ -102,8 +97,6 @@
 
     //-- visualize
     function visualize(dataObj) {
-      // console.log("INFO visualize: dataObj.children.length is " + dataObj.children.length);
-      // console.log("INFO visualize: maxCount is " + maxCount);
       var treemap = d3.layout.treemap()
                     .size([sWidth, sHeight])
                     .sticky(true)
