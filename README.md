@@ -1,6 +1,6 @@
 # TweetWordMap
 
-A treemap for the word count of home timeline tweets
+A treemap data visualization for the word count of home timeline tweets
 
 ## Libraries used
 
